@@ -10,7 +10,6 @@ class SinglePostHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        // backgroundImage: CachedNetworkImageProvider(user.photoUrl),
         backgroundColor: Colors.grey,
       ),
       title: GestureDetector(
@@ -23,7 +22,6 @@ class SinglePostHeader extends StatelessWidget {
           ),
         ),
       ),
-      // subtitle: Text("location"),
       trailing: Icon(FontAwesomeIcons.ellipsisV),
     );
   }

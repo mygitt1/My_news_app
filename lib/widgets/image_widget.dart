@@ -17,7 +17,6 @@ class _ImageWidgetState extends State<ImageWidget> {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      // decoration: BoxDecoration(border: Border.all()),
       width: widget.width,
       child: CachedNetworkImage(
         imageUrl: widget.imageUrl,
@@ -26,9 +25,11 @@ class _ImageWidgetState extends State<ImageWidget> {
           child: Center(child: CircularProgressIndicator()),
           padding: EdgeInsets.all(20.0),
         ),
-        errorWidget: (context, url, error) => Icon(Icons.error,color: Colors.red,),
+        errorWidget: (context, url, error) => Icon(
+          Icons.error,
+          color: Colors.red,
+        ),
       ),
     );
   }
 }
-

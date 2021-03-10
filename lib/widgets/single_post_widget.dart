@@ -40,10 +40,4 @@ class _SinglePostWidgetState extends State<SinglePostWidget> {
       ],
     );
   }
-
-// changeNoOfLike() async {
-//   await firebaseRef
-//       .document(widget.postData.postId)
-//       .updateData({"likes": widget.postData.likes + 1});
-// }
 }

@@ -22,9 +22,6 @@ class _SinglePostFooterState extends State<SinglePostFooter> {
 
   @override
   void initState() {
-    // if(widget.bookMarked == null){
-    //   bookMarked = widget.bookMarked;
-    // }
     setState(() {
       bookMarked = widget.bookMarked;
     });
@@ -104,7 +101,6 @@ class _SinglePostFooterState extends State<SinglePostFooter> {
         Padding(padding: EdgeInsets.only(top: 10.0)),
         Container(
           width: MediaQuery.of(context).size.width,
-          // decoration: BoxDecoration(border: Border.all()),
           margin: EdgeInsets.only(left: 20.0, right: 20.0),
           child: captionString(widget.postData["title"]),
         ),

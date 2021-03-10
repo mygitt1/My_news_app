@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:riafy/widgets/linear_progress_indicator.dart';
 
 class UploadNewPostForm extends StatefulWidget {
   final File image;
@@ -28,7 +27,7 @@ class _UploadNewPostFormState extends State<UploadNewPostForm> {
       // appBar: uploadPostAppBar(),
       body: ListView(
         children: [
-          isUploading ? CustomProgressIndicator() : Text(""),
+          isUploading ? CircularProgressIndicator() : Text(""),
           imageArea(),
           Padding(
             padding: EdgeInsets.only(top: 10),

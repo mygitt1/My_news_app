@@ -64,7 +64,7 @@ class _ListOfBookMarkedIdsState extends State<ListOfBookMarkedIds> {
   bookMarks(Map data) {
     List<String> allTitle = [];
     data.values.toList().forEach((element) {
-      // print(element["postId"]);
+      
       allTitle.add(element["title"]);
     });
     return allTitle;
