@@ -12,14 +12,11 @@ class SinglePostHeader extends StatelessWidget {
       leading: CircleAvatar(
         backgroundColor: Colors.grey,
       ),
-      title: GestureDetector(
-        onTap: () => print('showing profile'),
-        child: Text(
-          "${postData["channelname"]}",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+      title: Text(
+        "${postData["channelname"]}",
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
         ),
       ),
       trailing: Icon(FontAwesomeIcons.ellipsisV),

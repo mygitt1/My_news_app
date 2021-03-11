@@ -53,22 +53,44 @@ class GetApiData {
     }
   }
 
-  addOrderIdToLocalStorage(String title) async {
+  addOrderIdToLocalStorage(String postID) async {
     Map allOrdersMap = {};
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String jsonString = prefs.getString('orders.json');
     if (jsonString != null && jsonString.isNotEmpty) {
       allOrdersMap = json.decode(jsonString);
-      allOrdersMap["${allOrdersMap.length + 1}"] = {
-        "title": title,
-      };
-      var jsonToSave = json.encode(allOrdersMap);
-      await prefs.setString('orders.json', jsonToSave);
+      bool duplicate = false;
+      print(duplicate.toString());
+
+      allOrdersMap.forEach((key, value) {
+        if (allOrdersMap[key]["postId"] == postID) {
+          print("same id");
+          duplicate = true;
+        } else {
+          print("Unique Id");
+        }
+      });
+      if (duplicate) {
+        print('dublicate value found');
+
+        return null;
+      } else {
+        print('New value found');
+
+        allOrdersMap["${allOrdersMap.length + 1}"] = {
+          "postId": postID,
+        };
+        print(allOrdersMap.toString());
+        var jsonToSave = json.encode(allOrdersMap);
+        await prefs.setString('orders.json', jsonToSave).whenComplete(() {
+          print('completed to set');
+        });
+      }
     } else {
       allOrdersMap["1"] = {
-        "title": title,
+        "postId": postID,
       };
-      var jsonToSave = json.encode(allOrdersMap);
+      String jsonToSave = json.encode(allOrdersMap);
       await prefs.setString('orders.json', jsonToSave);
     }
   }

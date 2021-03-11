@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:riafy/api/get_data.dart';
 import 'package:riafy/screens/list_ids.dart';
+import 'package:riafy/widgets/bookmark_feed.dart';
 import 'package:riafy/widgets/user_feed.dart';
 
 double screenWidth = 0;
@@ -48,13 +49,13 @@ class _HomePageState extends State<HomePage> {
         ));
         break;
       case 4:
-        child = ListOfBookMarkedIds();
+        child = bookMarkPage();
         break;
     }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[100],
-        title: Text(
+        title: const Text(
           "Flutter Riafy",
           style: TextStyle(
             color: Colors.black,
@@ -169,5 +170,26 @@ class _HomePageState extends State<HomePage> {
       allIds.add(element["postId"]);
     });
     return allIds;
+  }
+
+  bookMarkPage() {
+    return FutureBuilder(
+      future: _getApiData.getOrderIdsFromLocalStorage(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          print("get local data");
+          // print(snapshot.data);
+          List<String> allBookMarkedPosts = bookMarks(snapshot.data);
+          return BookMarkFeed(
+            bookmarkedItems: allBookMarkedPosts,
+          );
+        } else {
+          print("no local data");
+          return BookMarkFeed(
+            bookmarkedItems: [],
+          );
+        }
+      },
+    );
   }
 }
